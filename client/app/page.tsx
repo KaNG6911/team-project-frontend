@@ -11,7 +11,7 @@ export default function Home() {
       <main>
            <Hero />
             <Solution />
-           <ClassSelection/>
+           {/* <ClassSelection/> */}
            <Classmap/>
            <Vision/>
       </main>

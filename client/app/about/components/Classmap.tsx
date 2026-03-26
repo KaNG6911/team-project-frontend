@@ -1,84 +1,84 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
 
-type Difficulty = "easy" | "medium" | "hard";
+type Difficulty = 'easy' | 'medium' | 'hard'
 
 interface IslandData {
-  id: number;
-  name: string;
-  color: string;
-  glowColor: string;
-  cx: number;
-  cy: number;
+  id: number
+  name: string
+  color: string
+  glowColor: string
+  cx: number
+  cy: number
 }
 
 const islandPositions: IslandData[] = [
   {
     id: 1,
-    name: "Цэцгийн арал",
-    color: "#4ade80",
-    glowColor: "rgba(74,222,128,0.7)",
+    name: 'Цэцгийн арал',
+    color: '#4ade80',
+    glowColor: 'rgba(74,222,128,0.7)',
     cx: 150,
     cy: 110,
   },
   {
     id: 2,
-    name: "Хүрхрээний арал",
-    color: "#38bdf8",
-    glowColor: "rgba(56,189,248,0.7)",
+    name: 'Хүрхрээний арал',
+    color: '#38bdf8',
+    glowColor: 'rgba(56,189,248,0.7)',
     cx: 450,
     cy: 210,
   },
   {
     id: 3,
-    name: "Галт уулын арал",
-    color: "#f97316",
-    glowColor: "rgba(249,115,22,0.7)",
+    name: 'Галт уулын арал',
+    color: '#f97316',
+    glowColor: 'rgba(249,115,22,0.7)',
     cx: 160,
     cy: 330,
   },
   {
     id: 4,
-    name: "Мөсний арал",
-    color: "#a78bfa",
-    glowColor: "rgba(167,139,250,0.7)",
+    name: 'Мөсний арал',
+    color: '#a78bfa',
+    glowColor: 'rgba(167,139,250,0.7)',
     cx: 450,
     cy: 440,
   },
   {
     id: 5,
-    name: "Одны арал",
-    color: "#fbbf24",
-    glowColor: "rgba(251,191,36,0.7)",
+    name: 'Одны арал',
+    color: '#fbbf24',
+    glowColor: 'rgba(251,191,36,0.7)',
     cx: 170,
     cy: 560,
   },
-];
+]
 
 const difficultyConfig = {
   easy: {
-    label: "Амархан",
-    bg: "#4ade80",
-    text: "#14532d",
-    emoji: "😊",
-    stars: "⭐",
+    label: 'Амархан',
+    bg: '#4ade80',
+    text: '#14532d',
+    emoji: '😊',
+    stars: '⭐',
   },
   medium: {
-    label: "Дундаж",
-    bg: "#fbbf24",
-    text: "#713f12",
-    emoji: "🤔",
-    stars: "⭐⭐",
+    label: 'Дундаж',
+    bg: '#fbbf24',
+    text: '#713f12',
+    emoji: '🤔',
+    stars: '⭐⭐',
   },
   hard: {
-    label: "Хэцүү",
-    bg: "#a855f7",
-    text: "#ffffff",
-    emoji: "😤",
-    stars: "⭐⭐⭐",
+    label: 'Хэцүү',
+    bg: '#a855f7',
+    text: '#ffffff',
+    emoji: '😤',
+    stars: '⭐⭐⭐',
   },
-};
+}
 
 /* ── Individual Island SVG drawings ── */
 
@@ -103,8 +103,8 @@ function Island1Flower({ hovered }: { hovered: boolean }) {
       {/* Flowers */}
       <g
         style={{
-          transform: hovered ? "translateY(-4px)" : "translateY(0)",
-          transition: "transform 0.35s",
+          transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+          transition: 'transform 0.35s',
         }}
       >
         <circle cx="-24" cy="-8" r="5.5" fill="#f9a8d4" />
@@ -142,7 +142,7 @@ function Island1Flower({ hovered }: { hovered: boolean }) {
       </g>
       <ellipse cx="-14" cy="10" rx="9" ry="4" fill="rgba(255,255,255,0.12)" />
     </g>
-  );
+  )
 }
 
 function Island2Waterfall({ hovered }: { hovered: boolean }) {
@@ -158,7 +158,7 @@ function Island2Waterfall({ hovered }: { hovered: boolean }) {
       <polygon points="-2,-2  -22,-34  14,-26" fill="#d1d5db" />
       <polygon points="-4,-2  -20,-36  10,-28" fill="#e5e7eb" />
       {/* Waterfall stream */}
-      <g opacity={hovered ? 1 : 0.8} style={{ transition: "opacity 0.3s" }}>
+      <g opacity={hovered ? 1 : 0.8} style={{ transition: 'opacity 0.3s' }}>
         <rect
           x="-7"
           y="-28"
@@ -187,7 +187,7 @@ function Island2Waterfall({ hovered }: { hovered: boolean }) {
       <ellipse cx="0" cy="-38" rx="22" ry="9" fill="rgba(251,146,60,0.18)" />
       <ellipse cx="-14" cy="10" rx="9" ry="4" fill="rgba(255,255,255,0.1)" />
     </g>
-  );
+  )
 }
 
 function Island3Volcano({ hovered }: { hovered: boolean }) {
@@ -241,8 +241,8 @@ function Island3Volcano({ hovered }: { hovered: boolean }) {
       {/* Eruption plume */}
       <g
         style={{
-          transform: hovered ? "translateY(-5px)" : "translateY(0)",
-          transition: "transform 0.3s",
+          transform: hovered ? 'translateY(-5px)' : 'translateY(0)',
+          transition: 'transform 0.3s',
         }}
       >
         <ellipse cx="-3" cy="-53" rx="6" ry="8" fill="rgba(249,115,22,0.85)" />
@@ -255,7 +255,7 @@ function Island3Volcano({ hovered }: { hovered: boolean }) {
       </g>
       <ellipse cx="-14" cy="10" rx="9" ry="4" fill="rgba(255,80,0,0.1)" />
     </g>
-  );
+  )
 }
 
 function Island4Ice({ hovered }: { hovered: boolean }) {
@@ -265,16 +265,16 @@ function Island4Ice({ hovered }: { hovered: boolean }) {
       <ellipse cx="0" cy="44" rx="56" ry="18" fill="#93c5fd" />
       <ellipse cx="0" cy="36" rx="52" ry="22" fill="#bfdbfe" />
       <ellipse cx="0" cy="14" rx="50" ry="28" fill="#dbeafe" />
-      <ellipse cx="0" cy="6" rx="46" ry="22" fill="#eff6ff" />
+      <ellipse cx="0" cy="6" rx="46" ry="22" fill="#bfdbfe" />
       {/* Snow bumps */}
       <ellipse cx="-17" cy="4" rx="16" ry="9" fill="white" />
-      <ellipse cx="15" cy="2" rx="14" ry="8" fill="white" />
+      <ellipse cx="15" cy="2" rx="14" ry="8" fill="#bfdbfe" />
       <ellipse cx="0" cy="-2" rx="18" ry="10" fill="#f8fafc" />
       {/* Ice crystal spikes */}
       <g
         style={{
-          transform: hovered ? "translateY(-4px)" : "translateY(0)",
-          transition: "transform 0.35s",
+          transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+          transition: 'transform 0.35s',
         }}
       >
         <polygon
@@ -324,7 +324,7 @@ function Island4Ice({ hovered }: { hovered: boolean }) {
       </text>
       <ellipse cx="-14" cy="10" rx="9" ry="4" fill="rgba(255,255,255,0.2)" />
     </g>
-  );
+  )
 }
 
 function Island5Star({ hovered }: { hovered: boolean }) {
@@ -346,10 +346,10 @@ function Island5Star({ hovered }: { hovered: boolean }) {
       <g
         style={{
           transform: hovered
-            ? "translate(2px,-7px) rotate(-8deg)"
-            : "translate(0,0) rotate(0deg)",
-          transition: "transform 0.4s cubic-bezier(0.34,1.56,0.64,1)",
-          transformOrigin: "22px -20px",
+            ? 'translate(2px,-7px) rotate(-8deg)'
+            : 'translate(0,0) rotate(0deg)',
+          transition: 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)',
+          transformOrigin: '22px -20px',
         }}
       >
         <rect x="18" y="-36" width="8" height="20" fill="#e2e8f0" rx="4" />
@@ -387,68 +387,68 @@ function Island5Star({ hovered }: { hovered: boolean }) {
       />
       <ellipse cx="-14" cy="10" rx="9" ry="4" fill="rgba(167,139,250,0.12)" />
     </g>
-  );
+  )
 }
 
 function IslandSVG({ id, hovered }: { id: number; hovered: boolean }) {
-  if (id === 1) return <Island1Flower hovered={hovered} />;
-  if (id === 2) return <Island2Waterfall hovered={hovered} />;
-  if (id === 3) return <Island3Volcano hovered={hovered} />;
-  if (id === 4) return <Island4Ice hovered={hovered} />;
-  return <Island5Star hovered={hovered} />;
+  if (id === 1) return <Island1Flower hovered={hovered} />
+  if (id === 2) return <Island2Waterfall hovered={hovered} />
+  if (id === 3) return <Island3Volcano hovered={hovered} />
+  if (id === 4) return <Island4Ice hovered={hovered} />
+  return <Island5Star hovered={hovered} />
 }
 
 /* ── Background decorative figures (clouds, fish, shells, bubbles) ── */
 const BG_FIGURES = [
-  { type: "cloud", x: 520, y: 55, s: 0.85, op: 0.14 },
-  { type: "cloud", x: 75, y: 160, s: 0.7, op: 0.13 },
-  { type: "cloud", x: 370, y: 290, s: 0.75, op: 0.12 },
-  { type: "cloud", x: 48, y: 455, s: 0.6, op: 0.12 },
-  { type: "cloud", x: 535, y: 510, s: 0.72, op: 0.13 },
-  { type: "fish", x: 490, y: 375, s: 1.0, op: 0.18, flip: false },
-  { type: "fish", x: 82, y: 245, s: 0.8, op: 0.16, flip: true },
-  { type: "fish", x: 310, y: 505, s: 0.7, op: 0.16, flip: false },
-  { type: "shell", x: 338, y: 88, s: 1.0, op: 0.18 },
-  { type: "shell", x: 232, y: 186, s: 0.8, op: 0.16 },
-  { type: "shell", x: 495, y: 145, s: 0.72, op: 0.16 },
-  { type: "shell", x: 102, y: 395, s: 0.82, op: 0.15 },
-  { type: "shell", x: 358, y: 575, s: 0.68, op: 0.14 },
-  { type: "bubble", x: 262, y: 58, r: 10, op: 0.11 },
-  { type: "bubble", x: 428, y: 322, r: 7, op: 0.11 },
-  { type: "bubble", x: 142, y: 562, r: 9, op: 0.11 },
-  { type: "bubble", x: 512, y: 242, r: 6, op: 0.09 },
-  { type: "bubble", x: 68, y: 315, r: 8, op: 0.1 },
-];
+  { type: 'cloud', x: 520, y: 55, s: 0.85, op: 0.14 },
+  { type: 'cloud', x: 75, y: 160, s: 0.7, op: 0.13 },
+  { type: 'cloud', x: 370, y: 290, s: 0.75, op: 0.12 },
+  { type: 'cloud', x: 48, y: 455, s: 0.6, op: 0.12 },
+  { type: 'cloud', x: 535, y: 510, s: 0.72, op: 0.13 },
+  { type: 'fish', x: 490, y: 375, s: 1.0, op: 0.18, flip: false },
+  { type: 'fish', x: 82, y: 245, s: 0.8, op: 0.16, flip: true },
+  { type: 'fish', x: 310, y: 505, s: 0.7, op: 0.16, flip: false },
+  { type: 'shell', x: 338, y: 88, s: 1.0, op: 0.18 },
+  { type: 'shell', x: 232, y: 186, s: 0.8, op: 0.16 },
+  { type: 'shell', x: 495, y: 145, s: 0.72, op: 0.16 },
+  { type: 'shell', x: 102, y: 395, s: 0.82, op: 0.15 },
+  { type: 'shell', x: 358, y: 575, s: 0.68, op: 0.14 },
+  { type: 'bubble', x: 262, y: 58, r: 10, op: 0.11 },
+  { type: 'bubble', x: 428, y: 322, r: 7, op: 0.11 },
+  { type: 'bubble', x: 142, y: 562, r: 9, op: 0.11 },
+  { type: 'bubble', x: 512, y: 242, r: 6, op: 0.09 },
+  { type: 'bubble', x: 68, y: 315, r: 8, op: 0.1 },
+]
 
 export default function AdventureMap() {
-  const [hoveredIsland, setHoveredIsland] = useState<number | null>(null);
-  const [selectedIsland, setSelectedIsland] = useState<IslandData | null>(null);
+  const [hoveredIsland, setHoveredIsland] = useState<number | null>(null)
+  const [selectedIsland, setSelectedIsland] = useState<IslandData | null>(null)
   const [selectedDifficulty, setSelectedDifficulty] =
-    useState<Difficulty | null>(null);
-  const [mounted, setMounted] = useState(false);
+    useState<Difficulty | null>(null)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
   const W = 600,
-    H = 660;
+    H = 660
 
   // Build smooth bezier road through island bases
   const roadPath = (() => {
-    const pts = islandPositions.map((p) => ({ x: p.cx, y: p.cy + 50 }));
-    let d = `M ${pts[0].x} ${pts[0].y}`;
+    const pts = islandPositions.map((p) => ({ x: p.cx, y: p.cy + 50 }))
+    let d = `M ${pts[0].x} ${pts[0].y}`
     for (let i = 1; i < pts.length; i++) {
       const p = pts[i - 1],
-        c = pts[i];
-      const cpx1 = p.x + (c.x - p.x) * 0.45;
-      const cpy1 = p.y + (c.y - p.y) * 0.1;
-      const cpx2 = c.x - (c.x - p.x) * 0.45;
-      const cpy2 = c.y - (c.y - p.y) * 0.1;
-      d += ` C ${cpx1} ${cpy1} ${cpx2} ${cpy2} ${c.x} ${c.y}`;
+        c = pts[i]
+      const cpx1 = p.x + (c.x - p.x) * 0.45
+      const cpy1 = p.y + (c.y - p.y) * 0.1
+      const cpx2 = c.x - (c.x - p.x) * 0.45
+      const cpy2 = c.y - (c.y - p.y) * 0.1
+      d += ` C ${cpx1} ${cpy1} ${cpx2} ${cpy2} ${c.x} ${c.y}`
     }
-    return d;
-  })();
+    return d
+  })()
 
   // Footprint positions (manually tuned along road)
   const footprints = [
@@ -464,14 +464,14 @@ export default function AdventureMap() {
     [360, 448],
     [312, 476],
     [255, 502],
-  ];
+  ]
 
   return (
     <div
       className="min-h-screen overflow-hidden relative flex flex-col"
       style={{
         background:
-          "linear-gradient(170deg, #0a1560 0%, #1530a0 35%, #1a46c8 65%, #0c2268 100%)",
+          'linear-gradient(170deg, #480485  0%, #a83cf0 35%, #0db004 65%, #186906 100%)',
       }}
     >
       {/* Background SVG layer */}
@@ -494,7 +494,7 @@ export default function AdventureMap() {
           {/* Decorative bg figures */}
           {mounted &&
             BG_FIGURES.map((f, i) => {
-              if (f.type === "cloud")
+              if (f.type === 'cloud')
                 return (
                   <g
                     key={i}
@@ -506,8 +506,8 @@ export default function AdventureMap() {
                     <ellipse cx="15" cy="-5" rx="20" ry="12" fill="white" />
                     <ellipse cx="0" cy="-10" rx="15" ry="12" fill="white" />
                   </g>
-                );
-              if (f.type === "fish")
+                )
+              if (f.type === 'fish')
                 return (
                   <g
                     key={i}
@@ -523,8 +523,8 @@ export default function AdventureMap() {
                       fill="rgba(255,255,255,0.3)"
                     />
                   </g>
-                );
-              if (f.type === "shell")
+                )
+              if (f.type === 'shell')
                 return (
                   <g
                     key={i}
@@ -549,8 +549,8 @@ export default function AdventureMap() {
                       fill="none"
                     />
                   </g>
-                );
-              if (f.type === "bubble")
+                )
+              if (f.type === 'bubble')
                 return (
                   <circle
                     key={i}
@@ -562,8 +562,8 @@ export default function AdventureMap() {
                     strokeWidth="1.5"
                     opacity={f.op}
                   />
-                );
-              return null;
+                )
+              return null
             })}
 
           {/* Tiny twinkling dots */}
@@ -586,42 +586,17 @@ export default function AdventureMap() {
       </div>
 
       {/* Header */}
-      <div className="relative z-10 text-center pt-5 pb-3 shrink-0">
-        <h1
-          className="text-3xl font-black text-white mb-2"
-          style={{
-            fontFamily: "system-ui, sans-serif",
-            textShadow:
-              "0 2px 14px rgba(0,0,0,0.65), 0 0 32px rgba(100,160,255,0.4)",
-          }}
-        >
-          🗺️ Амжилтын замбар
-        </h1>
-        <div
-          className="inline-flex items-center gap-4 px-6 py-2 rounded-full text-white font-bold text-sm"
-          style={{
-            background: "rgba(255,255,255,0.11)",
-            backdropFilter: "blur(14px)",
-            border: "1.5px solid rgba(255,255,255,0.22)",
-          }}
-        >
-          <span>👤 Бат</span>
-          <span style={{ opacity: 0.35 }}>|</span>
-          <span>⭐ 120</span>
-          <span style={{ opacity: 0.35 }}>|</span>
-          <span>❤️❤️❤️</span>
-        </div>
-      </div>
+      <div className="relative z-10 text-center pt-5 pb-3 shrink-0"></div>
 
       {/* Map */}
       <div
-        className="relative flex-1 mx-auto w-full"
-        style={{ maxWidth: "620px" }}
+        className="relative flex-1 mx-auto w-full mt-15"
+        style={{ maxWidth: '620px' }}
       >
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="w-full h-full"
-          style={{ display: "block" }}
+          style={{ display: 'block' }}
         >
           {/* ── Road ── */}
           {/* Soft outer glow */}
@@ -656,7 +631,7 @@ export default function AdventureMap() {
             strokeWidth="3.5"
             strokeDasharray="18 14"
             strokeLinecap="round"
-            style={{ animation: "dashMove 4s linear infinite" }}
+            style={{ animation: 'dashMove 4s linear infinite' }}
           />
           {/* Footprints */}
           {footprints.map(([fx, fy], i) => (
@@ -666,7 +641,7 @@ export default function AdventureMap() {
               y={fy}
               fontSize="13"
               textAnchor="middle"
-              style={{ opacity: 0.3, userSelect: "none" }}
+              style={{ opacity: 0.3, userSelect: 'none' }}
             >
               👣
             </text>
@@ -674,16 +649,16 @@ export default function AdventureMap() {
 
           {/* ── Islands ── */}
           {islandPositions.map((island) => {
-            const isHov = hoveredIsland === island.id;
+            const isHov = hoveredIsland === island.id
             return (
               <g
                 key={island.id}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: 'pointer' }}
                 onMouseEnter={() => setHoveredIsland(island.id)}
                 onMouseLeave={() => setHoveredIsland(null)}
                 onClick={() => {
-                  setSelectedIsland(island);
-                  setSelectedDifficulty(null);
+                  setSelectedIsland(island)
+                  setSelectedDifficulty(null)
                 }}
               >
                 {/* Glow halo under island */}
@@ -694,7 +669,7 @@ export default function AdventureMap() {
                     rx="55"
                     ry="18"
                     fill={island.glowColor}
-                    style={{ filter: "blur(8px)", opacity: 0.5 }}
+                    style={{ filter: 'blur(8px)', opacity: 0.5 }}
                   />
                 )}
 
@@ -704,8 +679,8 @@ export default function AdventureMap() {
                   style={{
                     filter: isHov
                       ? `drop-shadow(0 0 18px ${island.glowColor}) drop-shadow(0 0 36px ${island.glowColor})`
-                      : "drop-shadow(0 6px 18px rgba(0,0,0,0.5))",
-                    transition: "filter 0.3s",
+                      : 'drop-shadow(0 6px 18px rgba(0,0,0,0.5))',
+                    transition: 'filter 0.3s',
                   }}
                 >
                   <g
@@ -717,11 +692,11 @@ export default function AdventureMap() {
                     <g
                       style={{
                         transform: isHov
-                          ? "translateY(-10px) scale(1.13)"
-                          : "translateY(0) scale(1)",
+                          ? 'translateY(-10px) scale(1.13)'
+                          : 'translateY(0) scale(1)',
                         transition:
-                          "transform 0.38s cubic-bezier(0.34,1.56,0.64,1)",
-                        transformOrigin: "0 0",
+                          'transform 0.38s cubic-bezier(0.34,1.56,0.64,1)',
+                        transformOrigin: '0 0',
                       }}
                     >
                       <IslandSVG id={island.id} hovered={isHov} />
@@ -745,7 +720,7 @@ export default function AdventureMap() {
                     fontWeight="900"
                     fill="white"
                     textAnchor="middle"
-                    style={{ fontFamily: "system-ui" }}
+                    style={{ fontFamily: 'system-ui' }}
                   >
                     {island.id}
                   </text>
@@ -777,7 +752,7 @@ export default function AdventureMap() {
                     fontWeight="700"
                     fill="white"
                     textAnchor="middle"
-                    style={{ fontFamily: "system-ui" }}
+                    style={{ fontFamily: 'system-ui' }}
                   >
                     {island.name}
                   </text>
@@ -789,7 +764,7 @@ export default function AdventureMap() {
                         x="52"
                         y="-46"
                         fontSize="16"
-                        style={{ animation: "sparkle 0.8s ease-out forwards" }}
+                        style={{ animation: 'sparkle 0.8s ease-out forwards' }}
                       >
                         ✨
                       </text>
@@ -798,8 +773,8 @@ export default function AdventureMap() {
                         y="-18"
                         fontSize="13"
                         style={{
-                          animation: "sparkle 0.8s ease-out forwards",
-                          animationDelay: "0.12s",
+                          animation: 'sparkle 0.8s ease-out forwards',
+                          animationDelay: '0.12s',
                         }}
                       >
                         ⭐
@@ -809,8 +784,8 @@ export default function AdventureMap() {
                         y="12"
                         fontSize="14"
                         style={{
-                          animation: "sparkle 0.8s ease-out forwards",
-                          animationDelay: "0.24s",
+                          animation: 'sparkle 0.8s ease-out forwards',
+                          animationDelay: '0.24s',
                         }}
                       >
                         💫
@@ -819,7 +794,7 @@ export default function AdventureMap() {
                   )}
                 </g>
               </g>
-            );
+            )
           })}
         </svg>
       </div>
@@ -829,19 +804,19 @@ export default function AdventureMap() {
         <div
           className="fixed inset-0 flex items-center justify-center z-50 p-4"
           style={{
-            background: "rgba(0,0,0,0.68)",
-            backdropFilter: "blur(10px)",
+            background: 'rgba(0,0,0,0.68)',
+            backdropFilter: 'blur(10px)',
           }}
           onClick={() => setSelectedIsland(null)}
         >
           <div
             className="relative rounded-3xl p-6 w-full text-center"
             style={{
-              maxWidth: "300px",
-              background: "linear-gradient(150deg, #0f172a 0%, #1e3a8a 100%)",
+              maxWidth: '300px',
+              background: 'linear-gradient(150deg, #0f172a 0%, #1e3a8a 100%)',
               border: `2px solid ${selectedIsland.color}`,
               boxShadow: `0 0 55px ${selectedIsland.glowColor}, 0 28px 65px rgba(0,0,0,0.65)`,
-              animation: "popIn 0.42s cubic-bezier(0.34,1.56,0.64,1)",
+              animation: 'popIn 0.42s cubic-bezier(0.34,1.56,0.64,1)',
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -885,15 +860,15 @@ export default function AdventureMap() {
                     style={{
                       background: cfg.bg,
                       color: cfg.text,
-                      boxShadow: "0 4px 16px rgba(0,0,0,0.38)",
-                      border: "2px solid rgba(255,255,255,0.28)",
-                      transition: "transform 0.12s",
+                      boxShadow: '0 4px 16px rgba(0,0,0,0.38)',
+                      border: '2px solid rgba(255,255,255,0.28)',
+                      transition: 'transform 0.12s',
                     }}
                     onMouseDown={(e) =>
-                      (e.currentTarget.style.transform = "scale(0.96)")
+                      (e.currentTarget.style.transform = 'scale(0.96)')
                     }
                     onMouseUp={(e) =>
-                      (e.currentTarget.style.transform = "scale(1)")
+                      (e.currentTarget.style.transform = 'scale(1)')
                     }
                   >
                     <span>
@@ -907,7 +882,7 @@ export default function AdventureMap() {
               <div>
                 <div className="text-5xl mb-3">🎉</div>
                 <p className="text-white font-black text-lg mb-1">
-                  {difficultyConfig[selectedDifficulty].emoji}{" "}
+                  {difficultyConfig[selectedDifficulty].emoji}{' '}
                   {difficultyConfig[selectedDifficulty].label} түвшин
                 </p>
                 <p className="text-blue-300 text-sm mb-5">
@@ -917,16 +892,16 @@ export default function AdventureMap() {
                   onClick={() => setSelectedIsland(null)}
                   className="font-black px-8 py-3 rounded-2xl text-lg"
                   style={{
-                    background: "#4ade80",
-                    color: "#14532d",
-                    boxShadow: "0 4px 20px rgba(74,222,128,0.5)",
-                    transition: "transform 0.12s",
+                    background: '#4ade80',
+                    color: '#14532d',
+                    boxShadow: '0 4px 20px rgba(74,222,128,0.5)',
+                    transition: 'transform 0.12s',
                   }}
                   onMouseDown={(e) =>
-                    (e.currentTarget.style.transform = "scale(0.96)")
+                    (e.currentTarget.style.transform = 'scale(0.96)')
                   }
                   onMouseUp={(e) =>
-                    (e.currentTarget.style.transform = "scale(1)")
+                    (e.currentTarget.style.transform = 'scale(1)')
                   }
                 >
                   🚀 Тоглох!
@@ -1023,5 +998,5 @@ export default function AdventureMap() {
         }
       `}</style>
     </div>
-  );
+  )
 }
